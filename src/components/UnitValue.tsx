@@ -1,24 +1,19 @@
+import { useState } from "react";
+import Tab from "./shared/Tab";
+import StepInput from "./shared/StepInput";
+
 const UnitValue = () => {
+  const [unit, setUnit] = useState("percent");
+
+  const tabOptions = [
+    { label: "%", value: "percent" },
+    { label: "px", value: "pixels" },
+  ]
+
   return (
     <div className="w-70 bg-neutral-925 p-4 flex flex-col gap-4 text-xs">
-      <div className="flex gap-2 justify-between">
-        <label className="flex text-sm text-neutral-450 items-center font-normal">
-          Unit
-        </label>
-        <div className="w-[56.45%] bg-neutral-875 rounded-lg p-0.5 flex gap-0.5 h-9 font-medium">
-          <div className="w-1/2 flex justify-center items-center">%</div>
-          <div className="w-1/2 flex justify-center items-center">Px</div>
-        </div>
-      </div>
-      <div className="flex gap-2 justify-between">
-        <label className="flex text-sm text-neutral-450 items-center font-normal">
-          Value
-        </label>
-        <div className="w-[56.45%] bg-neutral-875 rounded-lg p-0.5 flex gap-0.5 h-9 font-medium">
-          <div className="w-1/2 flex justify-center items-center">%</div>
-          <div className="w-1/2 flex justify-center items-center">Px</div>
-        </div>
-      </div>
+      <Tab label="Unit" options={tabOptions} value={unit} setValue={setUnit} />
+      <StepInput unit={unit} label="Value" />
     </div>
   );
 };
