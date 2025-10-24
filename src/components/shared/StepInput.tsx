@@ -1,18 +1,16 @@
-import { StepInputProps, TabOption, TabProps } from "../../types";
+import { StepInputProps } from "../../types";
 import {
   MinusDisableIcon,
   MinusIcon,
   PlusDisableIcon,
   PlusIcon,
 } from "../icons";
-import { cn } from "../../utils";
 import { useEffect, useState } from "react";
 import Tooltip from "./Tooltip";
 
 const StepInput = ({ unit, label }: StepInputProps) => {
   const [value, setValue] = useState("0");
   const [validValue, setValidValue] = useState(0);
-  const [error, setError] = useState("");
 
   const handleSetOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value;
