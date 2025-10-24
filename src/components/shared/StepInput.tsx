@@ -15,16 +15,14 @@ const StepInput = ({ unit, label }: StepInputProps) => {
   const handleSetOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value;
 
-    // ✅ Thay dấu phẩy bằng dấu chấm ngay
     input = input.replace(",", ".");
 
-    // ✅ Cho phép nhập thoải mái (chưa cần lọc ký tự sai ở đây)
     setValue(input);
   };
 
   const handleBlur = () => {
-    let cleaned = value.replace(",", "."); // Thay dấu phẩy
-    let match = cleaned.match(/-?\d+(\.\d+)?/); // ✅ Lấy phần số hợp lệ đầu tiên
+    let cleaned = value.replace(",", ".");
+    let match = cleaned.match(/-?\d+(\.\d+)?/);
 
     let parsed = match ? parseFloat(match[0]) : 0;
 
@@ -32,7 +30,7 @@ const StepInput = ({ unit, label }: StepInputProps) => {
 
     if (unit === "percent") {
       if (parsed > 100) {
-        setValue(String(validValue)); // giữ nguyên giá trị cũ
+        setValue(String(validValue));
         return;
       }
     }
@@ -87,8 +85,10 @@ const StepInput = ({ unit, label }: StepInputProps) => {
         />
         <div className="order-1 relative group peer-hover:bg-neutral-725 hover:bg-neutral-725 rounded-l-lg">
           <button
+            id="step-decrease-button"
             className="relative w-9 p-2 flex items-center justify-center cursor-pointer rounded-l-lg"
             onClick={() => handleDecrease()}
+            aria-label="Decrease value"
           >
             {isMinusDisabled ? <MinusDisableIcon /> : <MinusIcon />}
           </button>
@@ -96,8 +96,10 @@ const StepInput = ({ unit, label }: StepInputProps) => {
         </div>
         <div className="order-3 relative group peer-hover:bg-neutral-725 hover:bg-neutral-725 rounded-r-lg">
           <button
+            id="step-increase-button"
             className=" w-9 p-2 flex items-center justify-center peer-hover:bg-neutral-725 cursor-pointer rounded-r-lg"
             onClick={() => handleIncrease()}
+            aria-label="Increase value"
           >
             {isPlusDisabled ? <PlusDisableIcon /> : <PlusIcon />}
           </button>
