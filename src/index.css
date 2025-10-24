@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-neutral-850: oklch(0.3092 0 0);
+  --color-neutral-875: oklch(0.2478 0 0);
+  --color-neutral-925: oklch(0.1957 0 0);
+  --color-neutral-450: oklch(0.738 0 0);
+  --color-neutral-725: oklch(0.3523 0 0);
+  --color-neutral-750: oklch(0.3791 0 0);
+  --color-blue-500: oklch(0.5776 0.2305 266.69);
+  --spacing-35: 8.75rem;
+}
